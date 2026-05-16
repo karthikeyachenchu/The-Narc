@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bento-bg: #09090b;
+  --color-bento-card: #111111;
+  --color-bento-border: rgba(255, 255, 255, 0.1);
+  --color-bento-highlight: #ff0000; /* Aggressive Red */
+  --color-the-narc-red: #ff3e3e;
+  --color-the-narc-dark: #121212;
+}
+
+@layer base {
+  body {
+    @apply antialiased bg-bento-bg text-white/90 selection:bg-red-500 selection:text-white;
+  }
+}
+
+/* Custom Scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-scrollbar-minimal::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar-minimal::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar-minimal::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar-minimal::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bento-card {
+  @apply bg-bento-card border border-bento-border rounded-[2.5rem] overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.5)];
+  backdrop-filter: blur(10px);
+}
+
+.glow-red {
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.markdown-content {
+  @apply leading-relaxed break-words;
+}
+
+.markdown-content p {
+  @apply mb-3 last:mb-0;
+}
+
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  @apply font-black tracking-tight mt-6 mb-3 first:mt-0 uppercase text-white;
+}
+
+.markdown-content h1 { @apply text-xl; }
+.markdown-content h2 { @apply text-lg; }
+.markdown-content h3 { @apply text-base; }
+
+.markdown-content ul, .markdown-content ol {
+  @apply mb-4 ml-4 space-y-1;
+}
+
+.markdown-content ul { @apply list-disc; }
+.markdown-content ol { @apply list-decimal; }
+
+.markdown-content li {
+  @apply pl-1;
+}
+
+.markdown-content strong {
+  @apply font-black text-white;
+}
+
+.markdown-content code {
+  @apply bg-white/10 px-1.5 py-0.5 rounded font-mono text-xs text-red-400;
+}
+
+.mask-fade-bottom {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
